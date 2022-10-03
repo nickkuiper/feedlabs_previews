@@ -27,7 +27,11 @@ for feed in feeds:
     info = feeds[feed]
     errors.telegram_bot_sendtext(intro_text,parse_mode='HTML',chat_id=info['tid'])
     df = pd.read_csv(info['url'])
-    df = df.sample(info['items'])
+    if info['items'] > len(df):
+        sample_rate = len(df)
+    else:
+        sample_rate = info['items']
+    df = df.sample(sample_rate)
     for index, row in df.iterrows():
         text = ''
         for field in info['fields']:
