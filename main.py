@@ -1,3 +1,6 @@
+#Backlog
+#feed setting to spreadsheet
+
 import time
 import pandas as pd
 from squaremoonpy import errors
@@ -10,15 +13,17 @@ base_telegram_id = '-541398399'
 feeds = {
     'Valk Kamers': {'url': 'https://storage.googleapis.com/fl-output-feeds/Q2gqNMw/9ar5Dze', 'fields' : ['hotel_id', 'name'], 'image_field' : ['image[0].url'], 'items' : 3, 'tid' : base_telegram_id},
     'FD News': {'url': 'https://storage.googleapis.com/fl-output-feeds/b9gNvgo/bmMaYMK', 'fields' : ['id', 'title'], 'image_field' : ['image[0].url'], 'items' : 3, 'tid' : base_telegram_id},
-    'FD Dagkoers': {'url': 'https://storage.googleapis.com/fl-output-feeds/b9gNvgo/mVMVwzq', 'fields' : ['id', 'title'], 'image_field' : ['image[0].url', 'image[1].url'], 'items' : 2, 'tid' : base_telegram_id},
+    'FD Dagkoers': {'url': 'https://storage.googleapis.com/fl-output-feeds/b9gNvgo/mVMVwzq', 'fields' : ['id', 'title'], 'image_field' : ['image[0].url'], 'items' : 2, 'tid' : base_telegram_id},
     #'FD Essay': {'url': 'https://storage.googleapis.com/fl-output-feeds/b9gNvgo/N4Me0gJ', 'fields' : ['id', 'title'], "image_field" : ['image[0].url'], 'items' : 2, 'tid' : base_telegram_id},
     #'Borzo Verticals': {'url': 'https://storage.googleapis.com/fl-output-feeds/62Md9zW/BEzpYrm', 'fields' : ['id', 'title'], 'image_field' : ['image[0].url'], 'items' : 3, 'tid' : base_telegram_id},
     'Borzo Hyperlocal': {'url': 'https://storage.googleapis.com/fl-output-feeds/62Md9zW/lvzL3Md', 'fields' : ['id', 'title'], 'image_field' : ['image[0].url'], 'items' : 3, 'tid' : base_telegram_id},
-    'Henk Kuiper Autos': {'url': 'https://storage.googleapis.com/fl-output-feeds/e2MWarL/Q2gqNMw', 'fields' : ['merk', 'model', 'price'], 'image_field' : ['image[0].url','image[1].url'], 'items' : 2, 'tid' : '-446561835'},
+    #'Henk Kuiper Autos': {'url': 'https://storage.googleapis.com/fl-output-feeds/e2MWarL/Q2gqNMw', 'fields' : ['merk', 'model', 'price'], 'image_field' : ['image[0].url','image[1].url'], 'items' : 2, 'tid' : '-446561835'},
     'SE - SV - BL': {'url': 'https://storage.googleapis.com/fl-output-feeds/4LMAaMl/l0zXLz2', 'fields' : ['vehicle_id', 'price'], 'image_field' : ['image[0].url'], 'items' : 2, 'tid' : base_telegram_id},
     'NO - NB - BL': {'url': 'https://storage.googleapis.com/fl-output-feeds/4LMAaMl/LJgZkM9', 'fields' : ['vehicle_id', 'price'], 'image_field' : ['image[0].url'], 'items' : 2, 'tid' : base_telegram_id},
+    'BE - NL - BL': {'url': 'https://storage.googleapis.com/fl-output-feeds/4LMAaMl/NGM9krm', 'fields' : ['vehicle_id', 'price'], 'image_field' : ['image[0].url'], 'items' : 2, 'tid' : base_telegram_id},
+    #'BE - NL - BL (FR Lang)': {'url': 'https://storage.googleapis.com/fl-output-feeds/4LMAaMl/LJgZkM9', 'fields' : ['vehicle_id', 'price'], 'image_field' : ['image[0].url'], 'items' : 2, 'tid' : base_telegram_id},
     'PO - PO - BL': {'url': 'https://storage.googleapis.com/fl-output-feeds/4LMAaMl/xNrJQzR', 'fields' : ['vehicle_id', 'price'], 'image_field' : ['image[0].url'], 'items' : 2, 'tid' : base_telegram_id},
-    'Ekar': {'url': 'https://storage.googleapis.com/fl-output-feeds/dNMjKzk/BPzOBMQ', 'fields' : ['vehicle_id', 'price'], 'image_field' : ['image[2].url'], 'items' : 2, 'tid' : base_telegram_id},
+    #'Ekar': {'url': 'https://storage.googleapis.com/fl-output-feeds/dNMjKzk/BPzOBMQ', 'fields' : ['vehicle_id', 'price'], 'image_field' : ['image[2].url'], 'items' : 2, 'tid' : base_telegram_id},
 }
 
 
