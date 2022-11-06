@@ -7,6 +7,7 @@ from squaremoonpy import errors, google_cloud as gc
 feeds_input = gc.get_spreadsheet('FeedLabs Previews', 'Sheet1')
 feeds = {x['Account']: x for x in feeds_input}
 
+
 for feed in feeds:
     intro_text = F"Previews for feed: {feed}"
     info = feeds[feed]
@@ -20,12 +21,12 @@ for feed in feeds:
     for index, row in df.iterrows():
         text = ''
         for field in info['fields'].split(','):
-            #print(field)
+            field = field.strip()
             text = text + F"<b>{field.title()}</b>: {row[field]}"
             text = text + '\n'
 
         for field in info['image_field'].split(','):
-            #print(img)
+            field = field.strip()
             extratext = text + F"<b>{field.title()}</b>"
             extratext = extratext + '\n'
             extratext = extratext + F"{row[field]}"
