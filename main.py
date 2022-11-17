@@ -2,13 +2,14 @@
 
 import time
 import pandas as pd
+from tqdm import tqdm
 from squaremoonpy import errors, google_cloud as gc
 
 feeds_input = gc.get_spreadsheet('FeedLabs Previews', 'Sheet1')
 feeds = {x['Account']: x for x in feeds_input}
 
 
-for feed in feeds:
+for feed in tqdm(feeds):
     intro_text = F"Previews for feed: {feed}"
     info = feeds[feed]
     errors.telegram_bot_sendtext(intro_text,parse_mode='HTML',chat_id=info['tid'])
