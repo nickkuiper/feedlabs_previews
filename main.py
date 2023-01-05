@@ -9,7 +9,7 @@ feeds_input = gc.get_spreadsheet('FeedLabs Previews', 'Sheet1')
 feeds = {x['Account']: x for x in feeds_input}
 
 
-for feed in tqdm():
+for feed in tqdm(feeds):
     #feed= 'FD Dagkoers'
     intro_text = F"Previews for feed: {feed}"
     info = feeds[feed]
