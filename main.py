@@ -3,19 +3,25 @@
 import time
 import pandas as pd
 from tqdm import tqdm
-from squaremoonpy import errors, google_cloud as gc
+from squaremoonpy import errors, google_cloud as gc, bannerwise as bw
 
 feeds_input = gc.get_spreadsheet('FeedLabs Previews', 'Sheet1')
 feeds = {x['Account']: x for x in feeds_input}
 
+output_chat = 'tid'
+#output_chat = 'dev_tid'
 
 for feed in tqdm(feeds):
     #feed= 'FD Dagkoers'
     intro_text = F"Previews for feed: {feed}"
     info = feeds[feed]
     if info['Active'] == 'TRUE':
-        errors.telegram_bot_sendtext(intro_text,parse_mode='HTML',chat_id=info['tid'])
-        df = pd.read_csv(info['url'])
+        errors.telegram_bot_sendtext(intro_text,parse_mode='HTML',chat_id=info[output_chat])
+        #check the type
+        if info['type'] == 'csv':
+            df = pd.read_csv(info['url'])
+        else:
+            df = bw.bannerwise2csv(info['url'])
         if info['items'] > len(df):
             sample_rate = len(df)
         else:
@@ -40,7 +46,7 @@ for feed in tqdm(feeds):
                 except:
                     extratext = extratext + "\n<a href='" + row['link'].split('?')[0]  +"'>Visit Product URL""</a>\n"
                 time.sleep(1.8)
-                errors.telegram_bot_sendtext(extratext,parse_mode='HTML',chat_id = info['tid'])
+                errors.telegram_bot_sendtext(extratext,parse_mode='HTML',chat_id = info[output_chat])
             time.sleep(1.8)
             #errors.telegram_bot_sendtext(text,parse_mode='HTML')
         time.sleep(2.8)
