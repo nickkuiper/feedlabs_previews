@@ -16,7 +16,7 @@ for feed in tqdm(feeds):
     intro_text = F"Previews for feed: {feed}"
     info = feeds[feed]
     if info['Active'] == 'TRUE':
-        errors.telegram_bot_sendtext(intro_text,parse_mode='HTML',chat_id=info[output_chat])
+        errors.telegram_bot_sendtext(intro_text,parse_mode='HTML',chat_id=info[output_chat], message_thread_id=info['message_thread_id'])
         #check the type
         if info['type'] == 'csv':
             df = pd.read_csv(info['url'])
@@ -46,7 +46,7 @@ for feed in tqdm(feeds):
                 except:
                     extratext = extratext + "\n<a href='" + row['link'].split('?')[0]  +"'>Visit Product URL""</a>\n"
                 time.sleep(1.8)
-                errors.telegram_bot_sendtext(extratext,parse_mode='HTML',chat_id = info[output_chat])
+                errors.telegram_bot_sendtext(extratext,parse_mode='HTML',chat_id = info[output_chat], message_thread_id=info['message_thread_id'])
             time.sleep(1.8)
             #errors.telegram_bot_sendtext(text,parse_mode='HTML')
         time.sleep(2.8)
