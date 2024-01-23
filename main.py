@@ -1,12 +1,17 @@
 #Backlog
 
 import time
+import random
 import pandas as pd
 from tqdm import tqdm
 from squaremoonpy import errors, google_cloud as gc, bannerwise as bw
 
 feeds_input = gc.get_spreadsheet('FeedLabs Previews', 'Sheet1')
 feeds = {x['Account']: x for x in feeds_input}
+
+l = list(feeds.items())
+random.shuffle(l)
+feeds = dict(l)
 
 output_chat = 'tid'
 #output_chat = 'dev_tid'
